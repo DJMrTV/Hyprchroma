@@ -4,11 +4,11 @@ VERSION = HEAD
 
 all:
 	mkdir -p out
-	$(CXX) -shared -fPIC --no-gnu-unique src/*.cpp -Isrc/ -o out/hyprchroma.so -g `pkg-config --cflags pixman-1 libdrm hyprland hyprlang` -std=c++2b -DWLR_USE_UNSTABLE
+	$(CXX) -shared -fPIC src/*.cpp -Isrc/ -o out/hyprchroma.so -g `pkg-config --cflags pixman-1 libdrm hyprland hyprlang` -std=c++2b -DWLR_USE_UNSTABLE
 
 build-version:
 	mkdir -p "out/$(VERSION)" 
-	$(CXX) -shared -fPIC --no-gnu-unique src/*.cpp -Isrc/ -I"hyprland/$(VERSION)/include/hyprland/protocols" -I"hyprland/$(VERSION)/include/hyprland/wlroots" -I"hyprland/$(VERSION)/include/" -o "out/$(VERSION)/hyprchroma.so" -g `pkg-config --cflags pixman-1 libdrm` -std=c++2b -DWLR_USE_UNSTABLE
+	$(CXX) -shared -fPIC src/*.cpp -Isrc/ -I"hyprland/$(VERSION)/include/hyprland/protocols" -I"hyprland/$(VERSION)/include/hyprland/wlroots" -I"hyprland/$(VERSION)/include/" -o "out/$(VERSION)/hyprchroma.so" -g `pkg-config --cflags pixman-1 libdrm` -std=c++2b -DWLR_USE_UNSTABLE
 
 clean:
 	rm -rf out
